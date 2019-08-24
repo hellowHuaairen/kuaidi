@@ -3,10 +3,10 @@
 ## 现实中的痛点
   现在周围的人都在做微商，如果每天订单量大的话，大量的时间会花费在给顾客快递单号的事情上。
 ## 解决问题
-  1. 我们在系统录入发货信息：收件人姓名，收件人电话，订单编号
-  2. 用户可电话号码查询自己的订单；
-  3. 点击订单编号，可跳转到快递详细物流信息页面。(https://q.kuaidi100.cn/auto.php)
-  
+    1. 我们在系统录入发货信息：收件人姓名，收件人电话，订单编号
+    2. 用户可电话号码查询自己的订单；
+    3. 点击订单编号，可跳转到快递详细物流信息页面。(https://q.kuaidi100.cn/auto.php)
+
 # 二、使用的技术
   1. **SpringBoot** ：Spring boot是Spring家族中的一个全新的框架，它用来简化Spring应用程序的创建和开发过程，也可以说Spring boot能简化我们之前采用SpringMVC+Spring+Mybatis框架进行开发的过程。
   2. **Bootstrap-Table**：Bootstrap table是国人开发的一款基于 Bootstrap 的 jQuery 表格插件，通过简单的设置，就可以拥有强大的单选、多选、排序、分页，以及编辑、导出、过滤（扩展）等等的功能。
@@ -15,7 +15,12 @@
 # 三、操作步骤
 ## 1. 快递单号查询页面
 - 用户查询页面 http://mhtclub.com/kuaidi/index.html
+
+  ![](D:\devEnv\kuaidi\doc\user_index.png)
+
 - 管理员操作页面：http://mhtclub.com/kuaidi/admin.html
+
+  ![](D:\devEnv\kuaidi\doc\admin_index.png)
 ## 2. 点击快递单号，直接查看详情
 
 # 四、持续更新
