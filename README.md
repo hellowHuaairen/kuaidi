@@ -16,11 +16,11 @@
 ## 1. 快递单号查询页面
 - 用户查询页面 http://mhtclub.com/kuaidi/index.html
 
-  ![](.\doc\user_index.png)
+  ![](.\doc\1.png)
 
 - 管理员操作页面：http://mhtclub.com/kuaidi/admin.html
 
-  ![](.\doc\admin_index.png)
+  ![](.\doc\2.png)
 ## 2. 点击快递单号，直接查看详情
 
 # 四、持续更新
