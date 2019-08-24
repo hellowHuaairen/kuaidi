@@ -1,0 +1,22 @@
+body {
+    font-family: "Microsoft YaHei";
+}
+
+nav a, .nav-li a {
+    color: #f2f2f2 !important;
+}
+
+@media (min-width: 768px) {
+    .nav-li:hover {
+        background-color: black;
+        font-size: 20px;
+    }
+}
+
+nav {
+    background-color: #424a57 !important;
+}
+
+.page-header {
+    margin-top: 65px;
+}

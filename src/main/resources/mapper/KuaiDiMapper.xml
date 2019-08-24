@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wangzg.kuaidi.mapper.KuaiDiMapper">
+
+    <select id="selectList" resultType="com.wangzg.kuaidi.domain.KuaiDi">
+        SELECT id, user_name, phone, kuaidi_no
+        FROM kuaidi
+        <where>
+            <if test="null != userName and !userName.equals('')">
+                user_name LIKE CONCAT('%', #{userName}, '%')
+            </if>
+            <if test="null != phone and !phone.equals('')">
+                phone LIKE CONCAT('%', #{phone}, '%')
+            </if>
+        </where>
+    </select>
+    
+    <insert id="insert">
+        INSERT INTO kuaidi(user_name, phone, kuaidi_no)
+        VALUES (#{userName}, #{phone}, #{kuaidiNo})
+    </insert>
+
+    <update id="update">
+        UPDATE kuaidi
+        SET user_name = #{userName}, phone = #{phone}, kuaidi_no = #{kuaidiNo}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE
+        FROM kuaidi
+        WHERE id = #{id}
+    </delete>
+</mapper>
