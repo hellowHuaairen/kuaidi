@@ -16,15 +16,32 @@
 ## 1. 快递单号查询页面
 - 用户查询页面 http://mhtclub.com/kuaidi/index.html
 
-  ![](.\doc\1.png)
+  ![](https://github.com/hellowHuaairen/kuaidi/blob/master/doc/1.png)
 
 - 管理员操作页面：http://mhtclub.com/kuaidi/admin.html
 
-  ![](.\doc\2.png)
+  ![](https://github.com/hellowHuaairen/kuaidi/blob/master/doc/2.png)
+  
+ 
 ## 2. 点击快递单号，直接查看详情
+    
+  方便用户的使用，直接点击订单编号，就可以跳转到快递的查询页面，支持所有快递订单的查询。
+  
+## 3. 快捷访问
+  扫描下面的二维，即可快捷访问网站，完成对数据的查询，修改，新增操作
+  
+  ![](https://github.com/hellowHuaairen/kuaidi/blob/master/doc/3.png)
+  
+  ![](https://github.com/hellowHuaairen/kuaidi/blob/master/doc/4.png)
+  
 
 # 四、持续更新
   1. 快递信息批量导入功能；
   2. 快递信息批量导出功能；
   3. ...
 
+# 五、联系我
+
+ 分享知识一种习惯，认识你才是我的真实目的！
+ 
+ ![](http://www.mhtclub.com/dist/images/contact.jpeg)
