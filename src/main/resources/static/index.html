@@ -76,6 +76,7 @@
             if(null != queryPhoneStr && '' !== queryPhoneStr){
                 if(!(/^1[3456789]\d{9}$/.test(queryPhoneStr))){
                     alert("手机号码有误，请重填！！！");
+					return false;
                 }
                 queryDataList();
 
