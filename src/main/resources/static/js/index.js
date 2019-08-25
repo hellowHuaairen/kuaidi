@@ -87,10 +87,10 @@ function nullAlert() {
 
 // 点击查询按钮，年龄符合查询条件方可跳转查询
 $('#queryBtn').click(function () {
-    var age = $('#queryAgeText').val();
+    // var age = $('#queryAgeText').val();
     // if (verifyAge(age)) {
         // 刷新并跳转到第一页
-        $testTable.bootstrapTable('selectPage', 1);
+    $testTable.bootstrapTable('selectPage', 1);
     // } else {
     //     bootbox.alert({
     //        title: titleTip,

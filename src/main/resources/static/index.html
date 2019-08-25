@@ -24,49 +24,113 @@
     <link href="css/index.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container-fluid">
+<div class="container-fluid">
 
-        <div class="row">
-            <nav class="navbar navbar-inverse navbar-fixed-top">
-                <a class="navbar-brand" href="http://mhtclub.com">我的个人主页</a>
-                <button class="navbar-toggle" data-toggle="collapse" data-target="#collapseMenu">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="collapseMenu">
-                    <ul class="nav navbar-nav">
-                        <li class="nav-li">
-                            <a href="https://github.com/hellowHuaairen/kuaidi" target="_blank">本项目github</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-
-        <h1 class="page-header">
-            快递单号自助查询
-        </h1>
-
-        <!-- 查询工具栏 -->
-        <div class="form-inline">
-            <div class="form-group" style="display: none;">
-                <label for="queryNameText">收件人姓名：</label>
-                <input id="queryNameText" class="form-control input-sm">
+    <div class="row">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <a class="navbar-brand" href="http://mhtclub.com">我的个人主页</a>
+            <button class="navbar-toggle" data-toggle="collapse" data-target="#collapseMenu">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapseMenu">
+                <ul class="nav navbar-nav">
+                    <li class="nav-li">
+                        <a href="https://github.com/hellowHuaairen/kuaidi" target="_blank">本项目github</a>
+                    </li>
+                </ul>
             </div>
-            <div class="form-group">
-                <label for="queryPhoneText">收件人电话：</label>
-                <input id="queryPhoneText" class="form-control input-sm">
-            </div>
-            <button class="btn btn-primary btn-sm" id="queryBtn">查询</button>
-            <!--<button class="btn btn-primary btn-sm" id="resetBtn">重置</button>-->
-            <!--<button class="btn btn-primary btn-sm" id="addBtn">新增</button>-->
+        </nav>
+    </div>
+
+    <h1 class="page-header">
+        快递单号自助查询
+    </h1>
+
+    <!-- 查询工具栏 -->
+    <div class="form-inline">
+        <div class="form-group" style="display: none;">
+            <label for="queryNameText">收件人姓名：</label>
+            <input id="queryNameText" class="form-control input-sm">
         </div>
-        <hr>
+        <div class="form-group">
+            <label for="queryPhoneText">收件人电话：</label>
+            <input id="queryPhoneText" class="form-control input-sm">
+        </div>
+        <button class="btn btn-primary btn-sm" id="queryBtn">查询</button>
+    </div>
+    <hr>
 
-        <table id="testTable"></table>
+    <div id="tableDiv"></div>
+    <!--<table id="testTable"></table>-->
+</div>
 
+<script type="text/javascript" >
+    $(document).ready(function(){
+        // 点击查询按钮，年龄符合查询条件方可跳转查询
+        $('#queryBtn').click(function () {
+            var queryPhoneStr = $("#queryPhoneText").val();
+            //每一先删除创建的表格
+            $("#tableDiv").empty();
+            if(null != queryPhoneStr && '' !== queryPhoneStr){
+                if(!(/^1[3456789]\d{9}$/.test(queryPhoneStr))){
+                    alert("手机号码有误，请重填！！！");
+                }
+                queryDataList();
 
-    <script type="text/javascript" src="js/index.js"></script>
+            }else{
+                alert("请填写收件人电话！！！")
+            }
+
+        });
+        function queryDataList() {
+            // 每一次点击查询就新增表格控件
+            $("#tableDiv").append("<table id='testTable'></table>");
+            var $testTable = $('#testTable');
+            $testTable.bootstrapTable({
+                url: 'getList',
+                queryParams: function (params) {
+                    return {
+                        offset: params.offset,
+                        limit: params.limit,
+                        userName: $('#queryNameText').val(),
+                        phone: $('#queryPhoneText').val()
+                    }
+                },
+                columns: [{
+                    field: 'id',
+                    title: '编号'
+                }, {
+                    field: 'userName',
+                    title: '收件人姓名'
+                }, {
+                    field: 'phone',
+                    title: '收件人电话'
+                }, {
+                    field: 'kuaidiNo',
+                    title: '快递单号',
+                    formatter: function (value, row, index) {
+                        return [
+                            '<a href="https://q.kuaidi100.cn/auto.php?no='+ row.kuaidiNo +'">'+ row.kuaidiNo + '</a>'
+                        ].join('');
+                    }
+                }],
+                striped: true,
+                pagination: true,
+                sidePagination: 'server',
+                pageSize: 10,
+                pageList: [5, 10, 25, 50, 100],
+                rowStyle: function (row, index) {
+                    var ageClass = '';
+                    if (row.age < 18) {
+                        ageClass = 'text-danger';
+                    }
+                    return {classes: ageClass}
+                }
+            });
+        }
+    })
+</script>
 </body>
 </html>
