@@ -18,12 +18,15 @@ $testTable.bootstrapTable({
     }, {
         field: 'phone',
         title: '收件人电话'
-    }, {
+    },  {
+        field: 'company',
+        title: '快递公司'
+    },{
         field: 'kuaidiNo',
         title: '快递单号',
         formatter: function (value, row, index) {
             return [
-                '<a href="https://q.kuaidi100.cn/auto.php?no='+ row.kuaidiNo +'">'+ row.kuaidiNo + '</a>'
+                '<a href="https://m.kuaidi100.com/app/query/?com=' + row.company + '&nu='+ row.kuaidiNo +'">'+ row.kuaidiNo + '</a>'
             ].join('');
         },
     }, {
@@ -103,7 +106,7 @@ $('#resetBtn').click(function() {
 });
 
 // 用于修改服务器资源
-function exchangeData(path, id, userName, phone, kuaiDiNo) {
+function exchangeData(path, id, userName, phone, kuaiDiNo, company) {
     $.ajax({
         url: path,
         type: 'post',
@@ -111,7 +114,8 @@ function exchangeData(path, id, userName, phone, kuaiDiNo) {
             id: id,
             userName: userName,
             phone: phone,
-            kuaiDiNo: kuaiDiNo
+            kuaiDiNo: kuaiDiNo,
+            company: company
         },
         success: function(res) {
             bootbox.alert({
@@ -142,8 +146,9 @@ $('#saveAdd').click(function() {
                 var userName = $('#addNameText').val();
                 var phone = $('#addPhoneText').val();
                 var kuaiDiNo = $('#addKuaiDiNoText').val();
+                var company = $('#addCompanyText').val();
                 if (verifyNameAndAddress(userName, kuaiDiNo)) {
-                    exchangeData('addKuaiDi', null, userName, phone, kuaiDiNo);
+                    exchangeData('addKuaiDi', null, userName, phone, kuaiDiNo, company);
                 } else {
                     nullAlert();
                 }
@@ -173,8 +178,9 @@ $('#saveModify').click(function() {
                 var userName = $('#modifyNameText').val();
                 var phone = $('#modifyPhoneText').val();
                 var kuaiDiNo = $('#modifyKuaiDiNoText').val();
+                var company = $('#modifyCompanyText').val();
                 if (verifyNameAndAddress(userName, phone)) {
-                    exchangeData('modifyKuaiDi', mid, userName, phone, kuaiDiNo);
+                    exchangeData('modifyKuaiDi', mid, userName, phone, kuaiDiNo, company);
                 } else {
                     nullAlert();
                 }

@@ -32,17 +32,11 @@ public class KuaiDiServiceImpl implements KuaiDiService {
     }
 
     @Override
-    public Message<KuaiDi> add(String username, String phone, String kuaiDiNo) {
+    public Message<KuaiDi> add(String username, String phone, String kuaiDiNo, String company) {
 
         Message msg;
-        username = StringUtils.defaultString(username);
-        phone = StringUtils.defaultString(phone);
-        kuaiDiNo = StringUtils.defaultString(kuaiDiNo);
 
-        KuaiDi kuaiDi = KuaiDi.builder()
-                .userName(username.trim()).phone(phone.trim())
-                .kuaidiNo(kuaiDiNo).build();
-
+        KuaiDi kuaiDi = buildKuaiDiObject(username, phone, kuaiDiNo, company);
         int rowCount = kuaiDiMapper.insert(kuaiDi);
         if (rowCount == 0) {
             msg = new Message(MessageEnum.FAIL.getCode(), "新增失败！");
@@ -52,17 +46,33 @@ public class KuaiDiServiceImpl implements KuaiDiService {
         return msg;
     }
 
-    @Override
-    public Message<KuaiDi> modify(Integer id, String username, String phone, String kuaiDiNo) {
-
-        Message msg;
+    /**
+     * 构建KuaiDi对象
+     * @param username
+     * @param phone
+     * @param kuaiDiNo
+     * @param company
+     * @return
+     */
+    private KuaiDi buildKuaiDiObject(String username, String phone, String kuaiDiNo, String company){
         username = StringUtils.defaultString(username);
         phone = StringUtils.defaultString(phone);
         kuaiDiNo = StringUtils.defaultString(kuaiDiNo);
-
+        company = StringUtils.defaultString(company);
         KuaiDi kuaiDi = KuaiDi.builder()
-                .id(id).userName(username.trim()).phone(phone.trim())
-                .kuaidiNo(kuaiDiNo).build();
+                .userName(username.trim()).phone(phone.trim())
+                .kuaidiNo(kuaiDiNo).company(company).build();
+
+        return kuaiDi;
+
+    }
+    @Override
+    public Message<KuaiDi> modify(Integer id, String username, String phone, String kuaiDiNo, String company) {
+
+        Message msg;
+
+        KuaiDi kuaiDi = buildKuaiDiObject(username, phone, kuaiDiNo, company);
+        kuaiDi.setId(id);
 
         int rowCount = kuaiDiMapper.update(kuaiDi);
         if (rowCount == 0) {

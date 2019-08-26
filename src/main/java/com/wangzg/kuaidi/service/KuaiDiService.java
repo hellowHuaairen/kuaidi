@@ -12,10 +12,10 @@ public interface KuaiDiService {
     List<KuaiDi> getList(String username, String phone);
 
     // 新增
-    Message<KuaiDi> add(String username, String phone, String kuaiDiNo);
+    Message<KuaiDi> add(String username, String phone, String kuaiDiNo, String company);
 
     // 修改
-    Message<KuaiDi> modify(Integer id, String username, String phone, String kuaiDiNo);
+    Message<KuaiDi> modify(Integer id, String username, String phone, String kuaiDiNo, String company);
 
     // 删除
     Message<KuaiDi> removeById(Integer id);

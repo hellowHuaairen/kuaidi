@@ -113,7 +113,7 @@
                     title: '快递单号',
                     formatter: function (value, row, index) {
                         return [
-                            '<a href="https://q.kuaidi100.cn/auto.php?no='+ row.kuaidiNo +'">'+ row.kuaidiNo + '</a>'
+                            '<a href="https://m.kuaidi100.com/app/query/?com=' + row.company + '&nu='+ row.kuaidiNo +'">'+ row.kuaidiNo + '</a>'
                         ].join('');
                     }
                 }],

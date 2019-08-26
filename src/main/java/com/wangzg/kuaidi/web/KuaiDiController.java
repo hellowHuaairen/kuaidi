@@ -32,8 +32,8 @@ public class KuaiDiController {
 
     @PostMapping("/addKuaiDi")
     public @ResponseBody
-    Message addKuaiDi(String userName, String phone, String kuaiDiNo) {
-        return kuaiDiService.add(userName, phone, kuaiDiNo);
+    Message addKuaiDi(String userName, String phone, String kuaiDiNo, String company) {
+        return kuaiDiService.add(userName, phone, kuaiDiNo, company);
     }
 
     @PostMapping("/delKuaiDi")
@@ -44,7 +44,7 @@ public class KuaiDiController {
 
     @PostMapping("/modifyKuaiDi")
     public @ResponseBody
-    Message modifyKuaiDi(Integer id, String userName, String phone, String kuaiDiNo) {
-        return kuaiDiService.modify(id, userName, phone, kuaiDiNo);
+    Message modifyKuaiDi(Integer id, String userName, String phone, String kuaiDiNo, String company) {
+        return kuaiDiService.modify(id, userName, phone, kuaiDiNo, company);
     }
 }

@@ -26,4 +26,9 @@ public class KuaiDi {
      */
     private String kuaidiNo;
 
+    /**
+     * 快递公司名称（拼音）
+     */
+    private String company;
+
 }
