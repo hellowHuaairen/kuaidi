@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--  todo 需要的时候再加前缀<base href="/bstabletest/">-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>快递单号查询</title>
+    <!-- jquery -->
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- bootbox -->
+    <script src="https://cdn.bootcss.com/bootbox.js/4.4.0/bootbox.min.js"></script>
+
+    <!-- bootstrap-table -->
+    <link href="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+
+    <link href="css/index.css" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid">
+
+    <div class="row">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <a class="navbar-brand" href="http://mhtclub.com">我的个人主页</a>
+            <button class="navbar-toggle" data-toggle="collapse" data-target="#collapseMenu">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapseMenu">
+                <ul class="nav navbar-nav">
+                    <li class="nav-li">
+                        <a href="https://github.com/hellowHuaairen/kuaidi" target="_blank">本项目github</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <h1 class="page-header">
+        快递单号自助查询
+    </h1>
+
+    <!-- 查询工具栏 -->
+    <div class="form-inline">
+        <div class="form-group" >
+            <label for="queryNameText">快递公司：</label>
+            <input id="queryNameText" class="form-control input-sm">
+        </div>
+        <div class="form-group">
+            <label for="queryPhoneText">快递单号：</label>
+            <input id="queryPhoneText" class="form-control input-sm">
+        </div>
+        <button class="btn btn-primary btn-sm" id="queryBtn">查询</button>
+    </div>
+    <hr>
+
+    <div id="tableDiv">
+        <ul>
+        </ul>
+    </div>
+    <!--<table id="testTable"></table>-->
+</div>
+
+<script type="text/javascript" >
+    // var jsonData = {
+    //     "message":"ok",
+    //     "state":"0",
+    //     "status":"200",
+    //     "condition":"F00",
+    //     "ischeck":"0",
+    //     "com":"yuantong",
+    //     "nu":"V030344422",
+    //     "data":[
+    //         {
+    //             "context":"上海分拨中心/装件入车扫描 ",
+    //             "time":"2012-08-28 16:33:19",
+    //             "ftime":"2012-08-28 16:33:19",
+    //         },
+    //         {
+    //             "context":"上海分拨中心/下车扫描 ",
+    //             "time":"2012-08-27 23:22:42",
+    //             "ftime":"2012-08-27 23:22:42",
+    //         }]
+    // };
+    $(document).ready(function(){
+        // 点击查询按钮，年龄符合查询条件方可跳转查询
+        $('#queryBtn').click(function () {
+            // for(var i=0;i<jsonData.data.length; i++){
+            //         $("#tableDiv ul").append('<li><h4>'+ jsonData.data[i].ftime + '     【' +jsonData.data[i].context +'】</h4></li>');
+            //     }
+            var no = $("#queryPhoneText").val();
+            //每一先删除创建的表格
+            $("#tableDiv ul").empty();
+            var com = $("#queryNameText").val();
+
+            $.ajax({    
+                type:'get',        
+                url:'http://localhost:8082/getKuaiDiInfoByJson?com='+ com +'&no=' + no,       
+                cache:false,    
+                dataType:'json',    
+                success:function(data){    
+                    console.log(data.data);
+                    var dataArray = data.data;
+                    for(var i=0;i<dataArray.length; i++){
+                        $("#tableDiv ul").append('<li><h4>'+ dataArray[i].ftime + '     ' +dataArray[i].context +'</h4></li>');
+                    }
+                   
+                }    
+            });    
+            
+
+        });
+    })
+</script>
+</body>
+</html>
