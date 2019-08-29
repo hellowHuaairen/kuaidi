@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--  todo 需要的时候再加前缀<base href="/bstabletest/">-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>快递单号查询</title>
+    <!-- jquery -->
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- bootbox -->
+    <script src="https://cdn.bootcss.com/bootbox.js/4.4.0/bootbox.min.js"></script>
+
+    <!-- bootstrap-table -->
+    <link href="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/foundation/5.5.3/css/foundation.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/foundation/5.5.3/js/foundation.min.js"></script>
+    <script src="https://cdn.staticfile.org/foundation/5.5.3/js/vendor/modernizr.js"></script>
+    <link href="css/index.css" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid">
+
+    <div class="row">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <a class="navbar-brand" href="http://mhtclub.com">我的个人主页</a>
+            <button class="navbar-toggle" data-toggle="collapse" data-target="#collapseMenu">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapseMenu">
+                <ul class="nav navbar-nav">
+                    <li class="nav-li">
+                        <a href="https://github.com/hellowHuaairen/kuaidi" target="_blank">本项目github</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <h1 class="page-header">
+        快递单号自助查询
+    </h1>
+
+    <!-- 查询工具栏 -->
+    <div class="form-inline">
+        <div class="form-group">
+            <label for="queryPhoneText">收件人电话：</label>
+            <input id="queryPhoneText" class="form-control input-sm">
+        </div>
+        <button class="btn btn-primary btn-sm" id="queryBtn">查询</button>
+    </div>
+    <hr>
+
+
+    <ul class="accordion" data-accordion id="ul_root">
+    </ul>
+    <!--<table id="testTable"></table>-->
+</div>
+
+<script type="text/javascript" >
+//     var jsonData = {
+// 	"message": "ok",
+// 	"state": "0",
+// 	"status": "200",
+// 	"dataList": [{
+// 		"message": "ok",
+// 		"state": "3",
+// 		"status": "200",
+// 		"condition": "F00",
+// 		"ischeck": "1",
+// 		"com": "yuantong",
+// 		"nu": "YT2005911851319",
+// 		"data": [{
+// 			"time": "2019-08-14 11:42:12",
+// 			"ftime": "2019-08-14 11:42:12",
+// 			"context": "客户 签收人: 王智国 已签收 感谢使用圆通速递，期待再次为您服务"
+// 		}, {
+// 			"time": "2019-08-14 08:22:16",
+// 			"ftime": "2019-08-14 08:22:16",
+// 			"context": "【陕西省西安市都市之门公司】 派件人: 白号来 派件中 派件员电话17316623737"
+// 		}, {
+// 			"time": "2019-08-14 08:11:08",
+// 			"ftime": "2019-08-14 08:11:08",
+// 			"context": "【陕西省西安市产业园公司】 已收入"
+// 		}, {
+// 			"time": "2019-08-14 01:39:23",
+// 			"ftime": "2019-08-14 01:39:23",
+// 			"context": "【西安转运中心】 已发出 下一站 【陕西省西安市产业园公司】"
+// 		}, {
+// 			"time": "2019-08-13 21:34:23",
+// 			"ftime": "2019-08-13 21:34:23",
+// 			"context": "【西安转运中心】 已收入"
+// 		}, {
+// 			"time": "2019-08-13 18:32:48",
+// 			"ftime": "2019-08-13 18:32:48",
+// 			"context": "【陕西省西安市周至县】 已发出 下一站 【西安转运中心】"
+// 		}, {
+// 			"time": "2019-08-13 16:38:50",
+// 			"ftime": "2019-08-13 16:38:50",
+// 			"context": "【陕西省西安市周至县公司】 已收件"
+// 		}, {
+// 			"time": "2019-08-13 15:15:51",
+// 			"ftime": "2019-08-13 15:15:51",
+// 			"context": "【陕西省西安市周至县九峰镇公司】 取件人: 李兵兵 已收件"
+// 		}]
+// 	}, {
+// 		"message": "ok",
+// 		"state": "3",
+// 		"status": "200",
+// 		"condition": "F00",
+// 		"ischeck": "1",
+// 		"com": "yuantong",
+// 		"nu": "YT2005912223170",
+// 		"data": [{
+// 			"time": "2019-08-14 11:42:10",
+// 			"ftime": "2019-08-14 11:42:10",
+// 			"context": "客户 签收人: 王智国 已签收 感谢使用圆通速递，期待再次为您服务"
+// 		}, {
+// 			"time": "2019-08-14 08:23:02",
+// 			"ftime": "2019-08-14 08:23:02",
+// 			"context": "【陕西省西安市都市之门公司】 派件人: 白号来 派件中 派件员电话17316623737"
+// 		}, {
+// 			"time": "2019-08-14 08:13:23",
+// 			"ftime": "2019-08-14 08:13:23",
+// 			"context": "【陕西省西安市都市之门公司】 已收入"
+// 		}, {
+// 			"time": "2019-08-14 08:13:17",
+// 			"ftime": "2019-08-14 08:13:17",
+// 			"context": "【陕西省西安市产业园公司】 已收入"
+// 		}, {
+// 			"time": "2019-08-14 01:38:10",
+// 			"ftime": "2019-08-14 01:38:10",
+// 			"context": "【西安转运中心】 已发出 下一站 【陕西省西安市产业园公司】"
+// 		}, {
+// 			"time": "2019-08-13 21:31:39",
+// 			"ftime": "2019-08-13 21:31:39",
+// 			"context": "【西安转运中心】 已收入"
+// 		}, {
+// 			"time": "2019-08-13 18:32:48",
+// 			"ftime": "2019-08-13 18:32:48",
+// 			"context": "【陕西省西安市周至县】 已发出 下一站 【西安转运中心】"
+// 		}, {
+// 			"time": "2019-08-13 16:39:02",
+// 			"ftime": "2019-08-13 16:39:02",
+// 			"context": "【陕西省西安市周至县公司】 已收件"
+// 		}, {
+// 			"time": "2019-08-13 15:16:01",
+// 			"ftime": "2019-08-13 15:16:01",
+// 			"context": "【陕西省西安市周至县九峰镇公司】 取件人: 李兵兵 已收件"
+// 		}]
+// 	}, {
+// 		"message": null,
+// 		"state": null,
+// 		"status": null,
+// 		"condition": null,
+// 		"ischeck": null,
+// 		"com": null,
+// 		"nu": null,
+// 		"data": null
+// 	}, {
+// 		"message": "不支持此快递公司",
+// 		"state": null,
+// 		"status": null,
+// 		"condition": null,
+// 		"ischeck": null,
+// 		"com": null,
+// 		"nu": null,
+// 		"data": null
+// 	}]
+// }
+    $(document).ready(function(){
+        $(document).foundation();
+        $('#queryBtn').click(function () {
+            // $("#ul_root").empty();
+            // var dataList = jsonData.dataList;
+            // for(var i=0;i<dataList.length; i++){
+            //     var kuaiRecodList = dataList[i].data;
+            //     if(null != kuaiRecodList){
+            //         $("#ul_root").append('<li class="accordion-navigation"><a href="#kuaidi'+ i +'">快递单号：'+ dataList[i].nu +'</a><div id="kuaidi'+ i +'" class="content"></div></li>');
+            //         // $("#tableDiv").append('<div id="div'+ i +'" style="margin-bottom: 20px;"></div></hr>');
+            //         // $("#div" + i).append('<p><h3>快递单号：'+ dataList[i].nu +'</h3></p>');
+            //         for(var j = 0;j < kuaiRecodList.length; j ++){
+            //             $("#kuaidi" + i).append('<li>'+ kuaiRecodList[j].ftime + '     ' + kuaiRecodList[j].context +'</li>');
+            //         }
+            //     }
+            // }
+            var phone = $("#queryPhoneText").val();
+            // //每一先删除创建的表格
+            $("#ul_root").empty();
+
+            $.ajax({
+                type:'get',
+                url:'http://mhtclub.com/search/getKuaiDiInfoByPhone?phone='+ phone,
+                cache:false,
+                dataType:'json',
+                success:function(result){
+                    console.log(result.dataList);
+                    var dataList = result.dataList;
+                    for(var i=0;i<dataList.length; i++){
+                        var kuaiRecodList = dataList[i].data;
+                        if(null != kuaiRecodList){
+                            $("#ul_root").append('<li class="accordion-navigation"><a href="#kuaidi'+ i +'">快递单号：'+ dataList[i].nu +'</a><div id="kuaidi'+ i +'" class="content"></div></li>');
+                            // $("#tableDiv").append('<div id="div'+ i +'" style="margin-bottom: 20px;"></div></hr>');
+                            // $("#div" + i).append('<p><h3>快递单号：'+ dataList[i].nu +'</h3></p>');
+                            for(var j = 0;j < kuaiRecodList.length; j ++){
+                                $("#kuaidi" + i).append('<li>'+ kuaiRecodList[j].ftime + '     ' + kuaiRecodList[j].context +'</li>');
+                            }
+                        }
+                    }
+                   
+                }
+            });
+            
+
+        });
+    })
+</script>
+<style>
+    /*#tableDiv ul {list-style:none;margin:0px;}*/
+    /*#tableDiv ul li {float:left;}*/
+    #ul_root li {list-style-type:none;}
+</style>
+</body>
+</html>

@@ -21,20 +21,20 @@ import java.util.Map;
 @Service
 public class KuaiDiQueryServiceImpl implements KuaiDiQueryService {
 
-//	public static void main(String[] args) {
-//		String key = "hkjeyxNE1250";				//贵司的授权key
-//		String customer = "545F71CBAF8B28420DED50BC37BC2822";			//贵司的查询公司编号
-//		String com = "yunda";			//快递公司编码
-//		String num = "4300495437386";	//快递单号
-//		String phone = "";				//手机号码后四位
-//		String from = "";				//出发地
-//		String to = "";					//目的地
-//		int resultv2 = 0;				//开启行政规划解析
-//
-//		KuaiDiQueryService kuaiDiQueryService = new KuaiDiQueryService(key, customer);
-//		String result = kuaiDiQueryService.synQueryData(com, num, phone, from, to, resultv2);
-//		System.out.println(result);
-//	}
+	public static void main(String[] args) {
+		String key = "hkjeyxNE1250";				//贵司的授权key
+		String customer = "545F71CBAF8B28420DED50BC37BC2822";			//贵司的查询公司编号
+		String com = "yunda";			//快递公司编码
+		String num = "4300495437386";	//快递单号
+		String phone = "";				//手机号码后四位
+		String from = "";				//出发地
+		String to = "";					//目的地
+		int resultv2 = 0;				//开启行政规划解析
+
+		KuaiDiQueryServiceImpl kuaiDiQueryService = new KuaiDiQueryServiceImpl();
+		String result = kuaiDiQueryService.synQueryData(com, num, phone, from, to, resultv2);
+		System.out.println(result);
+	}
 	
 	/**
 	 * 实时查询请求地址
