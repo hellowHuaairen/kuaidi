@@ -26,7 +26,7 @@ $testTable.bootstrapTable({
         title: '快递单号',
         formatter: function (value, row, index) {
             return [
-                '<a href="https://m.kuaidi100.com/app/query/?com=' + row.company + '&nu='+ row.kuaidiNo +'">'+ row.kuaidiNo + '</a>'
+				'<a onclick="kuaidiRecordInfo(' + "'" + row.kuaidiNo + "','" + row.company + "')" + '">' + row.kuaidiNo +'</a>',
             ].join('');
         },
     }, {
@@ -61,6 +61,35 @@ bootbox.setLocale('zh_CN');
 
 var titleTip = '提示';
 
+function kuaidiRecordInfo(no, company) {
+    $('#viewModal').modal('show');
+    $.ajax({
+        type:'get',
+        url:'getKuaiDiInfoByJson?com='+ company +'&no=' + no,
+        cache:false,
+        dataType:'json',
+        success:function(result){
+            // 显示详细信息 发送请求通过单号
+			$("#viewDataList").empty();
+            console.log(result.data);
+            var dataList = result.data;
+            if(null != dataList){
+				$("#viewDataList").append('<li class="accordion-navigation"><a href="#kuaidi'+ '">快递单号：'+ result.nu +'</a><div id="kuaidi'+ '" class="content"></div></li>');
+				$("#kuaidi").append('<section class="result-box"><div id="resultTop" class="flex result-top"><time class="up">时间</time><span>地点和跟踪进度</span></div><ul id="reordList'+'" class="result-list sortup"></ul></section>');  
+                for(var i=0;i<dataList.length; i++){
+                    var kuaiRecodList = dataList[i];
+                    if( i == 0){
+                        $("#reordList").append('<li class="last finish"><div class="time"> '+ kuaiRecodList.ftime + '</div><div class="dot"></div><div class="text"> '+ kuaiRecodList.context +'</div></li>');
+                    }else{
+                        $("#reordList").append('<li class=""><div class="time"> '+ kuaiRecodList.ftime + '</div><div class="dot"></div><div class="text"> '+ kuaiRecodList.context +'</div></li>');
+                    }
+                }
+            }
+
+        }
+    });
+
+}
 // 验证输入的年龄是否为数字
 function verifyAge(age) {
     var reg = /^[0-9]{0,3}$/;

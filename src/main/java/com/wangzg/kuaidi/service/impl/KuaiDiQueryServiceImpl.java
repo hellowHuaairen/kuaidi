@@ -22,10 +22,10 @@ import java.util.Map;
 public class KuaiDiQueryServiceImpl implements KuaiDiQueryService {
 
 	public static void main(String[] args) {
-		String key = "xxx";				//贵司的授权key
-		String customer = "xxx";			//贵司的查询公司编号
+		String key = "hkjeyxNE1250";				//贵司的授权key
+		String customer = "545F71CBAF8B28420DED50BC37BC2822";			//贵司的查询公司编号
 		String com = "yunda";			//快递公司编码
-		String num = "xx";	//快递单号
+		String num = "4300495437386";	//快递单号
 		String phone = "";				//手机号码后四位
 		String from = "";				//出发地
 		String to = "";					//目的地
@@ -41,8 +41,8 @@ public class KuaiDiQueryServiceImpl implements KuaiDiQueryService {
 	 */
 	private static final String SYNQUERY_URL = "http://poll.kuaidi100.com/poll/query.do";
 	
-	private String key = "xx";		//授权key
-	private String customer= "xx";	//实时查询公司编号
+	private String key = "hkjeyxNE1250";		//授权key
+	private String customer= "545F71CBAF8B28420DED50BC37BC2822";	//实时查询公司编号
 
 
 	@Override
