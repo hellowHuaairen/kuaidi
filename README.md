@@ -22,6 +22,11 @@
 
   ![](https://github.com/hellowHuaairen/kuaidi/blob/master/doc/admin.png)
   
+  查看详细快递详细信息
+  
+  ![](https://github.com/hellowHuaairen/kuaidi/blob/master/doc/admin_detail.png)
+  
+  
  
 ## 2. 点击快递单号，直接查看详情
     
