@@ -5,7 +5,7 @@
 ## 解决问题
     1. 我们在系统录入发货信息：收件人姓名，收件人电话，订单编号
     2. 用户可电话号码查询自己的订单；
-    3. 点击订单编号，可跳转到快递详细物流信息页面。(https://q.kuaidi100.cn/auto.php)
+    3. 点击订单编号，可跳转到快递详细物流信息页面。
 
 # 二、使用的技术
   1. **SpringBoot** ：Spring boot是Spring家族中的一个全新的框架，它用来简化Spring应用程序的创建和开发过程，也可以说Spring boot能简化我们之前采用SpringMVC+Spring+Mybatis框架进行开发的过程。
@@ -14,31 +14,37 @@
   4. **jQuery**：jQuery是一个开源免费的优秀JavaScript库，它能使用户更加方便地处理HTML文档、事件等等。jQuery由约翰·雷西格（John Resig）于2006年创建，从最初的增强CSS选择器功能，发展至今，功能超级丰富。
 # 三、操作步骤
 ## 1. 快递单号查询页面
-- 用户查询页面 http://mhtclub.com/kuaidi/index.html
+- 用户查询页面 
 
-  ![](https://github.com/hellowHuaairen/kuaidi/blob/master/doc/1.png)
+  ![](https://github.com/hellowHuaairen/kuaidi/blob/master/doc/query.png)
 
-- 管理员操作页面：http://mhtclub.com/kuaidi/admin.html
+- 管理员操作页面：
 
-  ![](https://github.com/hellowHuaairen/kuaidi/blob/master/doc/2.png)
+  ![](https://github.com/hellowHuaairen/kuaidi/blob/master/doc/admin.png)
+  
+  查看详细快递详细信息
+  
+  ![](https://github.com/hellowHuaairen/kuaidi/blob/master/doc/admin_detail.png)
+  
   
  
 ## 2. 点击快递单号，直接查看详情
     
   方便用户的使用，直接点击订单编号，就可以跳转到快递的查询页面，支持所有快递订单的查询。
   
-## 3. 快捷访问
-  扫描下面的二维，即可快捷访问网站，完成对数据的查询，修改，新增操作
-  
-  ![](https://github.com/hellowHuaairen/kuaidi/blob/master/doc/3.png)
-  
-  ![](https://github.com/hellowHuaairen/kuaidi/blob/master/doc/4.png)
+
   
 
 # 四、持续更新
   1. 快递信息批量导入功能；
-  2. 快递信息批量导出功能；
-  3. ...
+  2. 售后赔偿功能。
+  3. 自助下单服务，客户填写收货信息，下单信息存入后台系统。组织打包发货。（目前不考虑系统线上交易）
+  4. 快递后台管理系统：
+      - 包括代理销量和收益信息统计
+      - 个人效率和收益信息统计
+      - 发货地区数量统计
+      - 天/月/年总销量和收益信息统计
+      - 人员管理
 
 # 五、联系我
 
