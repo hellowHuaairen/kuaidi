@@ -117,7 +117,7 @@
                     for(var i=0;i<dataList.length; i++){
                         var kuaiRecodList = dataList[i].data;
                         if(null != kuaiRecodList){
-                            $("#ul_root").append('<li class="accordion-navigation"><a href="#kuaidi'+ i +'">快递单号：'+ dataList[i].nu +'</a><div id="kuaidi'+ i +'" class="content"></div></li>');
+                            $("#ul_root").append('<li class="accordion-navigation"><a href="#kuaidi'+ i +'">单号：'+ dataList[i].nu +' 点击查看详细信息</a><div id="kuaidi'+ i +'" class="content"></div></li>');
                             $("#kuaidi" + i).append('<section class="result-box"><div id="resultTop" class="flex result-top"><time class="up">时间</time><span>地点和跟踪进度</span></div><ul id="reordList'+ i +'" class="result-list sortup"></ul></section>');
                             for(var j = 0;j < kuaiRecodList.length; j ++){
                                 if( j == 0){

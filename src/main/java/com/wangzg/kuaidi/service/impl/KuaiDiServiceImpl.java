@@ -9,6 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -61,7 +62,7 @@ public class KuaiDiServiceImpl implements KuaiDiService {
         company = StringUtils.defaultString(company);
         KuaiDi kuaiDi = KuaiDi.builder()
                 .userName(username.trim()).phone(phone.trim())
-                .kuaidiNo(kuaiDiNo).company(company).build();
+                .kuaidiNo(kuaiDiNo).company(company).createTime(new Date()).build();
 
         return kuaiDi;
 

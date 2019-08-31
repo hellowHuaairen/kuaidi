@@ -16,16 +16,17 @@
                 phone LIKE CONCAT('%', #{phone}, '%')
             </if>
         </where>
+        order by create_time desc
     </select>
     
     <insert id="insert">
-        INSERT INTO kuaidi(user_name, phone, kuaidi_no, company)
-        VALUES (#{userName}, #{phone}, #{kuaidiNo}, #{company})
+        INSERT INTO kuaidi(user_name, phone, kuaidi_no, company, create_time)
+        VALUES (#{userName}, #{phone}, #{kuaidiNo}, #{company}, #{createTime})
     </insert>
 
     <update id="update">
         UPDATE kuaidi
-        SET user_name = #{userName}, phone = #{phone}, kuaidi_no = #{kuaidiNo}, company = #{company}
+        SET user_name = #{userName}, phone = #{phone}, kuaidi_no = #{kuaidiNo}, company = #{company},create_time = #{createTime}
         WHERE id = #{id}
     </update>
 
