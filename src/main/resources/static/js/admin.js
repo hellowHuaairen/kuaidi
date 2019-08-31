@@ -162,6 +162,7 @@ $('#addBtn').click(function() {
     $('#addNameText').val('');
     $('#addPhoneText').val('');
     $('#addKuaiDiNoText').val('');
+	$('#addCompanyText').val('');
     $('#addModal').modal('show');
 });
 
@@ -194,6 +195,7 @@ function modifyKuaiDi(id, name, age, address) {
     $('#modifyNameText').val(name);
     $('#modifyPhoneText').val(age);
     $('#modifyKuaiDiNoText').val(address);
+	$('#modifyCompanyText').val(address);
     $('#modifyModal').modal('show');
 }
 
