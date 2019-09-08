@@ -48,6 +48,6 @@
 
 # 五、联系我
 
- 分享知识一种习惯，认识你才是我的真实目的！
+ 分享是一种习惯，认识你才是我的真实目的！
  
  ![](http://www.mhtclub.com/dist/images/contact.jpeg)
