@@ -16,15 +16,15 @@
 ## 1. 快递单号查询页面
 - 用户查询页面 
 
-  ![](https://github.com/hellowHuaairen/kuaidi/blob/master/doc/query.png)
+  ![](./doc/query.png)
 
 - 管理员操作页面：
 
-  ![](https://github.com/hellowHuaairen/kuaidi/blob/master/doc/admin.png)
+  ![](./doc/admin.png)
   
   查看详细快递详细信息
   
-  ![](https://github.com/hellowHuaairen/kuaidi/blob/master/doc/admin_detail.png)
+  ![](./admin_detail.png)
   
   
  
