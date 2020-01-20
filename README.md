@@ -24,7 +24,7 @@
   
   查看详细快递详细信息
   
-  ![](./admin_detail.png)
+  ![](./doc/admin_detail.png)
   
   
  
@@ -50,4 +50,4 @@
 
  分享是一种习惯，认识你才是我的真实目的！
  
- ![](http://www.mhtclub.com/dist/images/contact.jpeg)
+ ![](./doc/contact.jpeg)
