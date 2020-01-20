@@ -50,4 +50,4 @@
 
  分享是一种习惯，认识你才是我的真实目的！
  
- ![](./doc/contact.jpeg)
+ ![](http://www.mhtclub.com/dist/images/contact.jpeg)
