@@ -23,6 +23,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<docker.image.prefix>kuaidi</docker.image.prefix>
+		<docker.images.repository>kuaidi</docker.images.repository>
 	</properties>
 
 	<dependencies>
@@ -132,11 +133,16 @@
 			<!-- Docker maven plugin -->
 			<plugin>
 				<groupId>com.spotify</groupId>
-				<artifactId>docker-maven-plugin</artifactId>
-				<version>1.0.0</version>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>1.4.6</version>
 				<configuration>
 					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-					<dockerDirectory>src/main/docker</dockerDirectory>
+					<contextDirectory>${project.basedir}</contextDirectory>
+					<tag>${project.version}</tag>
+					<repository>${docker.images.repository}/${project.artifactId}</repository>
+					<buildArgs>
+						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+					</buildArgs>
 					<resources>
 						<resource>
 							<targetPath>/</targetPath>

@@ -1,6 +1,9 @@
-FROM openjdk:8-jdk-alpine
+#基础配置
+FROM daocloud.io/library/java:8u40-b22
 VOLUME /tmp
 ARG JAR_FILE
-COPY ${JAR_FILE} app.jar
+ADD ${JAR_FILE} /home/app.jar
+ADD src/main/resources/application.properties /home/conf/application.properties
+WORKDIR /home/
 EXPOSE 8082
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+ENTRYPOINT ["java","-jar","-Dspring.config.location=conf/application.properties","./app.jar"]
