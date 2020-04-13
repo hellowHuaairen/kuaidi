@@ -37,7 +37,7 @@ public class KuaiDi {
     /**
      * 收件人姓名
      */
-    @TableField("ID")
+    @TableField("USER_NAME")
     private String userName;
     /**
      * 收件人电话
