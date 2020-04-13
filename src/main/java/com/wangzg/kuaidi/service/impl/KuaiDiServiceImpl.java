@@ -1,19 +1,23 @@
 package com.wangzg.kuaidi.service.impl;
 
+import cn.hutool.core.collection.CollectionUtil;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.wangzg.kuaidi.domain.KuaiDi;
 import com.wangzg.kuaidi.mapper.KuaiDiMapper;
 import com.wangzg.kuaidi.service.KuaiDiService;
+import com.wangzg.kuaidi.util.ExcelUtils;
 import com.wangzg.kuaidi.util.Message;
 import com.wangzg.kuaidi.util.MessageEnum;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 import java.util.List;
 
 @Service
-public class KuaiDiServiceImpl implements KuaiDiService {
+public class KuaiDiServiceImpl extends ServiceImpl<KuaiDiMapper, KuaiDi> implements KuaiDiService {
 
 //    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -95,6 +99,15 @@ public class KuaiDiServiceImpl implements KuaiDiService {
             msg = new Message(MessageEnum.SUCCESS.getCode(), "删除成功！");
         }
         return msg;
+    }
+
+    @Override
+    public void importData(MultipartFile multipartFile) throws Exception{
+        List<KuaiDi> kuaiDiList = ExcelUtils.getKuaiDiList(multipartFile.getInputStream());
+        if(CollectionUtil.isNotEmpty(kuaiDiList)){
+            //批量插入
+            this.saveBatch(kuaiDiList);
+        }
     }
 
 }

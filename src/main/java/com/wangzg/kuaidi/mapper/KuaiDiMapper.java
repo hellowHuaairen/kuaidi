@@ -1,5 +1,6 @@
 package com.wangzg.kuaidi.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.wangzg.kuaidi.domain.KuaiDi;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -9,7 +10,7 @@ import java.util.List;
 
 @Component
 @Mapper
-public interface KuaiDiMapper {
+public interface KuaiDiMapper  extends BaseMapper<KuaiDi> {
 
     // 查询
     List<KuaiDi> selectList(KuaiDi kuaiDi);

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -46,5 +47,11 @@ public class KuaiDiController {
     public @ResponseBody
     Message modifyKuaiDi(Integer id, String userName, String phone, String kuaiDiNo, String company) {
         return kuaiDiService.modify(id, userName, phone, kuaiDiNo, company);
+    }
+
+    @PostMapping("/import")
+    public Message importData(MultipartFile multipartFile) throws Exception{
+        kuaiDiService.importData(multipartFile);
+        return  new Message(200);
     }
 }
