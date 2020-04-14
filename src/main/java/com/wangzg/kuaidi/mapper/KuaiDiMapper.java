@@ -16,7 +16,7 @@ public interface KuaiDiMapper  extends BaseMapper<KuaiDi> {
     List<KuaiDi> selectList(KuaiDi kuaiDi);
 
     // 新增
-    int insert(KuaiDi kuaiDi);
+//    int insert(KuaiDi kuaiDi);
 
     // 修改
     int update(KuaiDi kuaiDi);
